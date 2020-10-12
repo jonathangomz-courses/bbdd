@@ -4,7 +4,7 @@ const Controller = {};
 
 Controller.get = (req, res) =>
   model.find({}, {'__v': 0})
-  .then((student) => res.json({student}));
+  .then((students) => res.json({ students }));
 
 Controller.save = async (req, res) => {
   const student = req.body;
