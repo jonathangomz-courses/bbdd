@@ -10,4 +10,14 @@ mongoose.connect(process.env.MONGODB_URI);
 
 app.use(api.path, api.router);
 
+const tset = {};
+tset.t = (req, res) => {
+  console.log('TEST');
+  res.json({
+    message: 'Ready'
+  });
+}
+
+app.get('/test', tset.t);
+
 module.exports = app;

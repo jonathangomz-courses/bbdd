@@ -16,13 +16,19 @@ const StudentSchema = new mongoose.Schema({
   blog: {
     type: String,
   }
+}, {
+  timestamps: true,
 });
 
 StudentSchema.methods.concatName = function() {
   return `${this.firstname} ${this.lastname}`;
 }
 
-StudentSchema.pre('save: ', function() {
+StudentSchema.methods.getUsername = function() {
+  return this.email.split('@')[0];
+}
+
+StudentSchema.pre('save', function() {
   console.log('pre - save:', this);
 });
 
